@@ -167,7 +167,15 @@ dependencies_check ${BASE_DIR}/depends
 mkdir -p ${WORK_DIR}
 log "Begin ${BASE_DIR}"
 
-for STAGE_DIR in ${BASE_DIR}/stage*; do
+STAGE_SINGLE=$1
+
+if [ "x"${STAGE_SINGLE} = "x" ]; then
+	RUN_STAGES=${BASE_DIR}/stage*
+else
+	RUN_STAGES=${BASE_DIR}/${STAGE_SINGLE}
+fi
+
+for STAGE_DIR in ${RUN_STAGES}; do
 	run_stage
 done
 
