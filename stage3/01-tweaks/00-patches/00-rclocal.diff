@@ -1,0 +1,43 @@
+Index: jessie-stage3/rootfs/etc/rc.local
+===================================================================
+--- jessie-stage3.orig/rootfs/etc/rc.local
++++ jessie-stage3/rootfs/etc/rc.local
+@@ -9,7 +9,6 @@
+ # In order to enable or disable this script just change the execution
+ # bits.
+ #
+-# By default this script does nothing.
+ 
+ # Print the IP address
+ _IP=$(hostname -I) || true
+@@ -17,4 +16,29 @@
+   printf "My IP address is %s\n" "$_IP"
+ fi
+ 
++start_calvin() {
++	MY_NAME=calvin-$(cat /sys/class/net/eth0/address | sed "s/://g")
++	retries=10
++	MY_IP=$1
++	while [ "x"$MY_IP = "x" ]; do
++		logger "Calvin waiting for IP"
++		sleep 3
++		MY_IP=$(hostname -I)
++		retries=$((retries-1))
++		if [ retries -eq 0 ]; then
++			logger "Calvin giving up - using localhost"
++			MY_IP=localhost
++			break
++		fi
++	done
++	logger "Starting Calvin with IP $MY_IP"
++	cd /home/pi/Calvin
++	csruntime --host $MY_IP --name $MY_NAME
++}
++
++# Wait for IP, start calvin
++start_calvin $_IP &
++
++# Start csweb
++csweb &
++
+ exit 0
