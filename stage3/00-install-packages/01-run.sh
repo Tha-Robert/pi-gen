@@ -11,6 +11,8 @@ install -v -o 1000 -g 1000 -d ${ROOTFS_DIR}/home/pi/Calvin
 unzip files/calvin.zip -d ${ROOTFS_DIR}/home/pi/Calvin
 chown 1000:1000 ${ROOTFS_DIR}/home/pi/Calvin -Rv
 
+cp files/calvin.conf ${ROOTFD_DIR}/home/pi/Calvin
+
 on_chroot << EOF
     cd /tmp
     sudo python get-pip.py
