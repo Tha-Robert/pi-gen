@@ -14,6 +14,7 @@ chown 1000:1000 ${ROOTFS_DIR}/home/pi/Calvin -Rv
 on_chroot << EOF
     cd /tmp
     sudo python get-pip.py
+    sudo pip install -U six
     cd /home/pi/Calvin/calvin-base-master
     sudo pip install -r requirements.txt
     sudo pip install -r test-requirements.txt
