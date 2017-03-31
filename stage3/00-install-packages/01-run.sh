@@ -12,6 +12,7 @@ unzip files/calvin.zip -d ${ROOTFS_DIR}/home/pi/Calvin
 chown 1000:1000 ${ROOTFS_DIR}/home/pi/Calvin -Rv
 
 cp files/calvin.conf ${ROOTFS_DIR}/home/pi/Calvin
+cp files/standard-pins.json ${ROOTFS_DIR}/home/pi/Calvin
 
 on_chroot << EOF
     cd /tmp

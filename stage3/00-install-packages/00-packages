@@ -3,6 +3,6 @@ git
 python2.7 python-dev python-smbus
 python-sense-hat python-pygame python-opencv
 libffi-dev libssl-dev
-wget
+vim
+wget curl
 ca-certificates
-

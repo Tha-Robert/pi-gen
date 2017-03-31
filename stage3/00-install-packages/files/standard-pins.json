@@ -1,0 +1,15 @@
+{                                                
+        "private": {                             
+                "hardware": {                    
+                        "sr04_ultrasonic": {     
+                                "echo_pin": 24,  
+                                "trig_pin": 23   
+                        },                       
+                        "ky040_rotary_encoder": {
+                                "clk_pin": 22,   
+                                "dt_pin": 27,    
+                                "sw_pin": 17     
+                        }                        
+                }                                
+        }                                        
+}                                                

@@ -1,7 +1,7 @@
 Index: jessie-stage3/rootfs/etc/rc.local
 ===================================================================
 --- jessie-stage3.orig/rootfs/etc/rc.local
-+++ jessie-stage3/rootfs/etc/rc.local
++++ jessie-stage3/rootf/rc.local
 @@ -9,7 +9,6 @@
  # In order to enable or disable this script just change the execution
  # bits.
@@ -10,7 +10,7 @@ Index: jessie-stage3/rootfs/etc/rc.local
  
  # Print the IP address
  _IP=$(hostname -I) || true
-@@ -17,4 +16,29 @@
+@@ -17,4 +16,30 @@
    printf "My IP address is %s\n" "$_IP"
  fi
  
@@ -31,7 +31,7 @@ Index: jessie-stage3/rootfs/etc/rc.local
 +	done
 +	logger "Starting Calvin with IP $MY_IP"
 +	cd /home/pi/Calvin
-+	csruntime --host $MY_IP --name $MY_NAME
++	sudo -S -u pi csruntime --host $MY_IP --name $MY_NAME --attr-file /home/pi/Calvin/standard-pins.json --logfile /home/pi/Calvin/$MY_NAME.log
 +}
 +
 +# Wait for IP, start calvin
