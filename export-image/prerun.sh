@@ -1,5 +1,5 @@
 #!/bin/bash -e
-IMG_FILE="${STAGE_WORK_DIR}/${IMG_DATE}-${IMG_NAME}${IMG_SUFFIX}.img"
+IMG_FILE="${STAGE_WORK_DIR}/${IMG_NAME}${IMG_SUFFIX}.img"
 
 unmount_image ${IMG_FILE}
 
@@ -57,4 +57,4 @@ mount -v $ROOT_DEV ${ROOTFS_DIR} -t ext4
 mkdir -p ${ROOTFS_DIR}/boot
 mount -v $BOOT_DEV ${ROOTFS_DIR}/boot -t vfat
 
-rsync -aHAXx ${EXPORT_ROOTFS_DIR}/ ${ROOTFS_DIR}/
+rsync -aHAx ${EXPORT_ROOTFS_DIR}/ ${ROOTFS_DIR}/
